@@ -1,0 +1,48 @@
+
+public class Produto {
+    private int codigo;
+    private String nome;
+    private double preco;
+    private int quantidade;
+
+    public Produto(int codigo, String nome, double preco, int quantidade) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public boolean retirarEstoque(int quantidade) {
+        if (quantidade <= 0 || quantidade > this.quantidade) {
+            return false;
+        }
+
+        this.quantidade -= quantidade;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            java.util.Locale.forLanguageTag("pt-BR"),
+            "%d - %s | R$ %.2f | Estoque: %d",
+            codigo, nome, preco, quantidade
+        );
+    }
+}
